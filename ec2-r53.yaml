@@ -1,0 +1,25 @@
+- name: create ec2 and route53
+  hosts: local
+  connection: local
+  vars:
+    ami_id: ami-09c813fb71547fc4f
+    sg_id: sg-0ff5d6e086f8deb6b
+    zone_id: "Z08957613Q2VP6KYK490C"
+    domain_name: "anitha.fun"
+    instance:
+    - mongodb
+    tasks:
+    - name: create ec2_instance
+      amazon.aws.ec2_instance:
+        name: "{{ item }}"
+        instance_type: t3.micro
+        security_group: "{{ sg_id }}"
+        image_id: "{{ ami_id }}"
+        tags:
+          Name: "{{ item }}"
+      loop: "{{ instance }}"
+      register: ec2_output
+
+    - name: print the ec2 output
+      ansible.builtin.debug:
+        msg: "{{ ec2_output }}"
