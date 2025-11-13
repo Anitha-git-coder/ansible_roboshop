@@ -6,7 +6,7 @@
     sg_id: sg-0ff5d6e086f8deb6b
     zone_id: "Z08957613Q2VP6KYK490C"
     domain_name: "anitha.fun"
-    instance:
+    instances:
     - mongodb
     tasks:
     - name: create ec2_instance
