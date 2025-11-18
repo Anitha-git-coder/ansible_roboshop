@@ -6,3 +6,25 @@
     ansible.builtin.copy: # module
       src: mongo.repo # source, file path, path to the file you want to copy
       dest: /etc/yum.repos.d/mongo.repo
+
+  - name: install mongodb server
+    ansible.builtin.package:
+      name: mongodb-org
+      state: present
+
+  - name: replace a word, allow remote connections 0.0.0.0
+    ansible.builtin.replace:
+      path: vim /etc/mongod.conf
+      regex: 127.0.0.1
+      replace: 0.0.0.0 
+
+  - name: start and enable service
+    ansible.builtin.service:
+      name: mongod
+      state: started
+      enabled: yes
+
+  # - name: restart service
+  #   ansible.builtin.systemd:
+  #     name: mongod
+  #     state: restarted  
