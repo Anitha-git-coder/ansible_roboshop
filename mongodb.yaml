@@ -14,7 +14,7 @@
 
   - name: replace a word, allow remote connections 0.0.0.0
     ansible.builtin.replace:
-      path: vim /etc/mongod.conf
+      path: /etc/mongod.conf
       regexp: 127.0.0.1
       replace: 0.0.0.0 
 
