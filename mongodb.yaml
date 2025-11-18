@@ -1,8 +1,8 @@
-# - name: setup mongodb server
-#   hosts: mongodb
-#   become: yes
-#   tasks:
-#   - name: copy mongodb repo
-#     ansible.builtin.copy: # module
-#       src: mongo.repo # source, file path, path to the file you want to copy
-#       dest: /etc/yum.repos.d/mongo.repo
+- name: setup mongodb server
+  hosts: mongodb
+  become: yes
+  tasks:
+  - name: copy mongodb repo
+    ansible.builtin.copy: # module
+      src: mongo.repo # source, file path, path to the file you want to copy
+      dest: /etc/yum.repos.d/mongo.repo
